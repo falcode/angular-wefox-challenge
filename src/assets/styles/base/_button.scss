@@ -1,0 +1,16 @@
+.c-button {
+    &-submit {
+      width: 100%;
+      padding: 12px;
+      color: black;
+      border: solid 1px black;
+      background-color: white;
+      box-shadow: 2px 2px black;
+      cursor: pointer;
+    }
+    &-submit--invalid {
+      color: red;
+      background-color: rgb(187, 187, 187);
+      cursor: not-allowed;
+    }
+}

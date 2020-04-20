@@ -1,12 +1,16 @@
+import { Query } from '@datorama/akita';
 import { Injectable } from '@angular/core';
-import { QueryEntity } from '@datorama/akita';
 import { PostStore, PostState } from './post.store';
-import { Post } from '../../interfaces/post';
 
 @Injectable({
   providedIn: 'root'
 })
-export class PostQuery extends QueryEntity<PostState, Post> {
+export class PostQuery extends Query<PostState> {
+  public posts$ = this.select('posts');
+  public selectedPost$ = this.select('selectedPost');
+  public loading$ = this.select('loading');
+  public editingPost$ = this.select('editingPost');
+
 
   constructor(protected store: PostStore) {
     super(store);

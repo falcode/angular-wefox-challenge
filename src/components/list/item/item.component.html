@@ -1,1 +1,15 @@
-<p>item works!</p>
+<div class="c-item" *ngIf="post" (click)="postStoreService.selectPost(post.id)">
+    <div class="c-item-info">
+        <p *ngIf="post.title"><b>Title</b>: {{post.title}}</p>
+        <p *ngIf="post.lat"><b>Lat</b>: {{post.lat}}</p>
+        <p *ngIf="post.long"><b>Long</b>: {{post.long}}</p>
+    </div>
+    <div class="c-item-edit"
+    (click)="editingPost($event, post)">
+        <h3>edit</h3>    
+    </div>
+    <div class="c-item-close" 
+    (click)="removePost($event, post.id)">
+        <h3>X</h3>
+    </div>
+</div>

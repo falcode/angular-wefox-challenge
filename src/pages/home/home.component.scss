@@ -1,0 +1,15 @@
+@import "../../styles.scss";
+.p-home {
+  .p-home-grid {
+    display: flex;
+    flex-direction: column;
+    app-map {
+        width: 100%;
+    }
+  }
+  @include sm {
+    .p-home-grid {
+      flex-direction: row-reverse;
+    }
+  }
+}

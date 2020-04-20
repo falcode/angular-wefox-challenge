@@ -1,1 +1,5 @@
-<p>list works!</p>
+<div class="c-list">
+    <ng-container *ngFor="let post of postQuery.posts$ | async">
+        <app-item [post]="post"></app-item>
+    </ng-container>
+</div>

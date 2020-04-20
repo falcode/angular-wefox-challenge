@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PostQuery } from '@core/states/post/post.query';
 
 @Component({
   selector: 'app-list',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListComponent implements OnInit {
 
-  constructor() { }
+  constructor(public postQuery: PostQuery) { }
 
   ngOnInit(): void {
   }

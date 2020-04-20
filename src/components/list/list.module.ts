@@ -9,6 +9,7 @@ import { ItemComponent } from './item/item.component';
   declarations: [ListComponent, ItemComponent],
   imports: [
     CommonModule
-  ]
+  ],
+  exports: [ListComponent]
 })
 export class ListModule { }

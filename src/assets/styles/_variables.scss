@@ -9,3 +9,31 @@ $screen-lg-min: 992px;
 
 // Large tablets and desktops
 $screen-xl-min: 1200px;
+
+//colors
+
+$primary-color: #FF9F00;
+$primary-color-light: rgb(247, 184, 84);
+$primary-color-lighter: rgb(247, 204, 134);
+$primary-color-lighter-transparent: rgba(247, 204, 134, 0.623);
+
+$primary-color-dark: rgb(187, 115, 0);
+
+$item-border-color: #e8e8e8;
+
+// ui measures
+
+$header-height: 10vh;
+
+$item-height: 10vh;
+
+$map-height-monitor: 100vh;
+$map-height-mobile: 50vh; 
+
+$list-height-monitor: 100vh;
+$list-height-mobile: 50vh; 
+$list-width-monitor: 35vw;
+$list-width-mobile: 100vw;
+
+
+

@@ -5,9 +5,10 @@ import { HomeRoutingModule } from './home-routing.module';
 import { MapModule } from 'components/map/map.module';
 import { FormModule } from 'components/form/form.module';
 import { ListModule } from 'components/list/list.module';
+import { LoadingComponent } from '@ui/loading/loading.component';
 
 @NgModule({
-  declarations: [HomeComponent],
+  declarations: [HomeComponent, LoadingComponent],
   imports: [
     CommonModule,
     HomeRoutingModule,

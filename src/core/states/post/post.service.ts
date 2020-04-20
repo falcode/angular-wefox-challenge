@@ -11,6 +11,7 @@ export class PostStoreService {
 
   constructor(private postStore: PostStore, private postService: PostService) {
   }
+
   // STORE INTERACTION FUNCTIONS
   private updateAllPosts = (posts: Post[]) =>
     this.postStore.update({ posts })
@@ -33,24 +34,52 @@ export class PostStoreService {
       posts: arrayRemove(state.posts, [id])
     }))
 
+  public editPost = (editingPost: Post | null) =>
+    this.postStore.update({editingPost})
+
+  public updateLoading = (loading: boolean) =>
+    this.postStore.update({ loading })
+
   // API INTERACTION FUNCTIONS
-  public listAllPosts = (): Subscription =>
-    this.postService.list().pipe(take(1))
-      .subscribe((posts: Post[]) => this.updateAllPosts(posts))
+  public listAllPosts = (): Subscription => {
+    this.updateLoading(true);
+    return this.postService.list().pipe(take(1))
+      .subscribe((posts: Post[]) => {
+        this.updateAllPosts(posts);
+        this.updateLoading(false);
+      });
+  }
 
-  public selectPost = (id: number): Subscription =>
-    this.postService.show(id).pipe(take(1))
-      .subscribe((post: Post) => this.updateSelectedPost(post))
-
-  public createPost = (post: Post): Subscription =>
-    this.postService.create(post).pipe(take(1))
-      .subscribe((newPost: Post) => this.addPost(newPost))
-
-  public updatePost = (id: number, post: Post): Subscription =>
-    this.postService.update(id, post).pipe(take(1))
-      .subscribe((updatedPost: Post) => this.updateUniquePost(updatedPost))
-
-  public removePost = (id: number): Subscription =>
-    this.postService.remove(id).pipe(take(1))
-      .subscribe(() => this.removeUniquePost(id))
+  public selectPost = (id: number): Subscription => {
+    this.updateLoading(true);
+    return this.postService.show(id).pipe(take(1))
+      .subscribe((post: Post) => {
+        this.updateSelectedPost(post);
+        this.updateLoading(false);
+      });
+    }
+  public createPost = (post: Post): Subscription => {
+    this.updateLoading(true);
+    return this.postService.create(post).pipe(take(1))
+      .subscribe((newPost: Post) => {
+        this.addPost(newPost);
+        this.updateLoading(false);
+      });
+    }
+  public updatePost = (id: number, post: Post): Subscription => {
+    this.updateLoading(true);
+    return this.postService.update(id, post).pipe(take(1))
+      .subscribe((updatedPost: Post) => {
+        this.updateUniquePost(updatedPost);
+        this.updateLoading(false);
+      });
+    }
+  public removePost = (id: number): Subscription => {
+    this.updateLoading(true);
+    return this.postService.remove(id).pipe(take(1))
+      .subscribe(() => {
+        this.removeUniquePost(id);
+        this.updateLoading(false);
+      });
+    }
 }

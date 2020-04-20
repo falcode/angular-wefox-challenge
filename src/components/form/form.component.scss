@@ -1,0 +1,41 @@
+@import '../../styles.scss';
+
+.c-form {
+    .c-form-title {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        .c-form-close {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: black;
+            color: white;
+            border-radius: 20px;
+            width: 20px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+    }
+    form {
+        * {
+            margin-bottom: 10px;
+        }
+        display: flex;
+        flex-direction: column;
+        textarea {
+            width: 250px;
+            height: 100px;
+        }
+    }
+    @include sm {
+        form {
+
+            textarea {
+                width: 30em;
+
+            }
+        }
+    }
+}

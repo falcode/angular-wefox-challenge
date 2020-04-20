@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PointMapComponent } from './point-map/point-map.component';
+import { MapComponent } from './map.component';
 
 
 
 @NgModule({
-  declarations: [PointMapComponent],
+  declarations: [MapComponent],
   imports: [
     CommonModule
-  ]
+  ],
+  exports: [MapComponent]
 })
 export class MapModule { }

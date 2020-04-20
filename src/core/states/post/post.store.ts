@@ -5,12 +5,16 @@ import { Post } from '@core/interfaces/post';
 export interface PostState {
   posts: Post[];
   selectedPost: Post;
+  editingPost: Post;
+  loading: boolean;
 }
 
 export function createInitialState(): PostState {
   return {
     posts: [],
-    selectedPost: null
+    selectedPost: null,
+    editingPost: null,
+    loading: false,
   };
 }
 

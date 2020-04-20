@@ -1,1 +1,47 @@
-<p>form works!</p>
+<div class="c-form" >
+    <div class="c-form-title">
+        <h1>{{editingPost ? 'Edit' : 'Add new'}} Post</h1>
+        <div class="c-form-close" 
+        (click)="close()">X</div>
+    </div>
+    <form [formGroup]="postForm">
+        <input
+          class="c-form-input"
+          type="text"
+          placeholder="Title (required)"
+          formControlName="title"
+        />
+        <input
+          class="c-form-input"
+          type="number"
+          placeholder="Lat (required)"
+          formControlName="lat"
+        />
+        <input
+          class="c-form-input"
+          type="number"
+          placeholder="Long (required)"
+          formControlName="long"
+        />
+        <textarea
+          class="c-form-textarea"
+          type="text"
+          placeholder="Description (required)"
+          formControlName="content"
+          rows="10" cols="60"
+        ></textarea>
+        <input
+          class="c-form-input"
+          type="text"
+          placeholder="Image URL"
+          formControlName="image_url"
+        />
+        <button class="c-button-submit" 
+            type="button" 
+            (click)="editingPost ? setEditedPost(editingPost.id, postForm.value) : setPost(postForm.value)" 
+            [disabled]="postForm.invalid"
+            [ngClass]="{'c-button-submit--invalid': postForm.invalid}">
+            {{editingPost ? 'Edit' : 'Save'}} Post
+        </button>
+    </form>
+</div>

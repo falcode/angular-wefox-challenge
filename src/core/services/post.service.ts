@@ -22,7 +22,7 @@ export class PostService {
         this.http.post<Post>(this.postsURL, post)
 
     public update = (id: number, post: Post): Observable<Post> =>
-        this.http.post<Post>(`${this.postsURL}/${id}`, post)
+        this.http.put<Post>(`${this.postsURL}/${id}`, post)
 
     public remove = (id: number): Observable<any> =>
         this.http.delete(`${this.postsURL}/${id}`)
