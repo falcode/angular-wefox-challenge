@@ -5,7 +5,6 @@
     "emitDecoratorMetadata": true,
     "types": [
       "jest",
-      "dom",
       "node",
       "googlemaps"
     ]
