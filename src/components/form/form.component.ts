@@ -1,11 +1,11 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { UiService } from '@core/services/ui.service';
-import { PostStoreService } from '@core/states/post/post.service';
-import { Post } from '@core/interfaces/post';
-import { PostQuery } from '@core/states/post/post.query';
 import { Subject } from 'rxjs';
+import { Post } from 'core/interfaces/post';
 import { takeUntil } from 'rxjs/operators';
+import { UiService } from 'core/services/ui.service';
+import { PostQuery } from 'core/states/post/post.query';
+import { PostStoreService } from 'core/states/post/post.service';
 
 @Component({
   selector: 'app-form',

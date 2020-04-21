@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { PostQuery } from '@core/states/post/post.query';
+import { PostQuery } from 'core/states/post/post.query';
+import { Component, OnInit, Inject } from '@angular/core';
 
 @Component({
   selector: 'app-list',

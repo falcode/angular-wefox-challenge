@@ -1,16 +1,33 @@
-import { TestBed } from '@angular/core/testing';
-
 import { PostService } from './post.service';
-
+import { of } from 'rxjs';
+const mockPosts = [
+  {
+    title: '',
+    id: 1,
+    content: '',
+    lat: 1, long: '',
+    image_url: '',
+    created_at: null,
+    updated_at: null
+  }
+];
 describe('PostService', () => {
   let service: PostService;
+  const http = {
+    get: jest.fn(() =>
+      of(mockPosts)
+    )
+  };
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(PostService);
+    service = new PostService(http as any);
   });
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
+  test('should be list array of posts', () => {
+    service.list().subscribe((airports) => {
+      expect(http.get).toBeCalledWith('https://wf-challenge-d6haqugtoo.herokuapp.com/api/v1/posts');
+      expect(airports.length).toBe(1);
+    });
   });
+
 });

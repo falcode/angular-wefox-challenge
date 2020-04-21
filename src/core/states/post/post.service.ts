@@ -1,16 +1,18 @@
+import { Subscription } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { PostStore } from './post.store';
-import { Injectable } from '@angular/core';
-import { Post } from '@core/interfaces/post';
-import { PostService } from '@core/services/post.service';
+import { Post } from '../../interfaces/post';
+import { Injectable, Inject } from '@angular/core';
+import { PostService } from '../../services/post.service';
 import { arrayUpdate, arrayRemove, arrayAdd } from '@datorama/akita';
-import { Subscription } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class PostStoreService {
 
-  constructor(private postStore: PostStore, private postService: PostService) {
-  }
+  constructor(
+     private postStore: PostStore,
+     private postService: PostService
+  ) {}
 
   // STORE INTERACTION FUNCTIONS
   private updateAllPosts = (posts: Post[]) =>

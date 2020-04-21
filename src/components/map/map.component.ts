@@ -1,8 +1,10 @@
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { Post } from '@core/interfaces/post';
-import { UiService } from '@core/services/ui.service';
-import { PostQuery } from '@core/states/post/post.query';
+import { Post } from 'core/interfaces/post';
+import {} from 'googlemaps';
+
+import { UiService } from 'core/services/ui.service';
+import { PostQuery } from 'core/states/post/post.query';
 import { Component, OnInit, ViewChild, AfterViewInit, ElementRef, OnDestroy } from '@angular/core';
 
 @Component({
@@ -12,16 +14,16 @@ import { Component, OnInit, ViewChild, AfterViewInit, ElementRef, OnDestroy } fr
 })
 export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('mapContainer', { static: false }) gmap: ElementRef;
-  private destroySubject$: Subject<void> = new Subject();
   public map: google.maps.Map;
   private marker: google.maps.Marker = null;
-  private defaultCoordinates = new window.google.maps.LatLng(41.365462, 2.135936);
+  private defaultCoordinates = new google.maps.LatLng(41.365462, 2.135936);
   private mapOptions: google.maps.MapOptions = {
     center: this.defaultCoordinates,
     zoom: 8,
     streetViewControl: false,
     mapTypeControl: false,
   };
+  private destroySubject$: Subject<void> = new Subject();
 
   constructor(public uiService: UiService, private postQuery: PostQuery) { }
 
@@ -46,7 +48,7 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private mapInitializer(): void {
-    this.map = new window.google.maps.Map(this.gmap.nativeElement, this.mapOptions);
+    this.map = new google.maps.Map(this.gmap.nativeElement, this.mapOptions);
   }
 
   private generateCoordinates(post: Post): google.maps.LatLng | null {
@@ -59,14 +61,14 @@ export class MapComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   private generateMarker(post: Post): google.maps.Marker {
-    return new window.google.maps.Marker({
+    return new google.maps.Marker({
       position: this.generateCoordinates(post),
       map: this.map,
     });
   }
 
   private setMarker(post: Post): void {
-    const infowindow = new window.google.maps.InfoWindow();
+    const infowindow = new google.maps.InfoWindow();
     this.marker = this.generateMarker(post);
     google.maps.event.addListener(this.marker, 'click', () => {
       infowindow.setContent(this.generateInfoWindow(post));

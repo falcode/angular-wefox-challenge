@@ -5,7 +5,9 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "test": "ng test",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:cc": "jest --coverage",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
@@ -19,6 +21,7 @@
     "@angular/platform-browser": "~9.0.3",
     "@angular/platform-browser-dynamic": "~9.0.3",
     "@angular/router": "~9.0.3",
+    "@briebug/jest": "^1.3.1",
     "@datorama/akita": "^4.22.2",
     "@types/googlemaps": "^3.39.3",
     "rxjs": "~6.5.4",
@@ -30,21 +33,39 @@
     "@angular/cli": "~9.0.4",
     "@angular/compiler-cli": "~9.0.3",
     "@angular/language-service": "~9.0.3",
-    "@types/jasmine": "~3.5.0",
-    "@types/jasminewd2": "~2.0.3",
+    "@types/jest": "^25.2.1",
     "@types/node": "^12.11.1",
     "akita-schematics": "^2.0.1",
     "codelyzer": "^5.1.2",
-    "jasmine-core": "~3.5.0",
-    "jasmine-spec-reporter": "~4.2.1",
-    "karma": "~4.3.0",
-    "karma-chrome-launcher": "~3.1.0",
-    "karma-coverage-istanbul-reporter": "~2.1.0",
-    "karma-jasmine": "~2.0.1",
-    "karma-jasmine-html-reporter": "^1.4.2",
+    "jest": "^25.4.0",
+    "jest-preset-angular": "^8.1.3",
     "protractor": "~5.4.3",
+    "ts-jest": "^25.4.0",
     "ts-node": "~8.3.0",
     "tslint": "~5.18.0",
     "typescript": "~3.7.5"
+  },
+  "jest": {
+    "preset": "jest-preset-angular",
+    "setupFilesAfterEnv": [
+      "<rootDir>/setupJest.ts"
+    ],
+    "roots": [
+      "<rootDir>/src/"
+    ],
+    "collectCoverage": true,
+    "coverageReporters": [
+      "html"
+    ],
+    "globals": {
+    },
+    "coverageDirectory": "coverage/my-app",
+    "moduleNameMapper": {
+      "^core/(.*)$": "<rootDir>/src/core/$1",
+      "^ui/(.*)$": "<rootDir>/src/ui/$1",
+      "^services/(.*)$": "<rootDir>/src/core/services/$1",
+      "^states/(.*)$": "<rootDir>/src/core/states/$1",
+      "^components/(.*)$": "<rootDir>/src/components/$1"
+    }
   }
 }

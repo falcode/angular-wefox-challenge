@@ -1,4 +1,4 @@
-import { Component, NgZone } from '@angular/core';
+import { Component, NgZone, Inject } from '@angular/core';
 import { akitaDevtools } from '@datorama/akita';
 import { environment } from 'environments/environment';
 
@@ -8,9 +8,7 @@ import { environment } from 'environments/environment';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'angular-wefox-challenge';
   constructor(private ngZone: NgZone) {
-
     if (!environment.production) {
       akitaDevtools(ngZone);
     }

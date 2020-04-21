@@ -1,9 +1,10 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { PostStoreService } from '@core/states/post/post.service';
-import { UiService } from '@core/services/ui.service';
+import { Component, OnInit, OnDestroy, Inject } from '@angular/core';
+import { PostStoreService } from 'core/states/post/post.service';
+import { UiService } from 'core/services/ui.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { PostQuery } from '@core/states/post/post.query';
+import { PostQuery } from 'core/states/post/post.query';
+import {} from 'googlemaps';
 
 @Component({
   selector: 'app-home',
@@ -16,9 +17,14 @@ export class HomeComponent implements OnInit, OnDestroy {
   constructor(
     private postService: PostStoreService,
     public postQuery: PostQuery,
-    public uiService: UiService) { }
+    public uiService: UiService
+  ) { }
 
   ngOnInit(): void {
+    this.setupDisplayListener();
+  }
+
+  public setupDisplayListener(): void {
     this.uiService.displayForm.pipe(takeUntil(this.destroySubject$))
       .subscribe((display: boolean) => this.displayForm = display);
     this.postService.listAllPosts();
