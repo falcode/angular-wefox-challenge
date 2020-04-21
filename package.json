@@ -24,6 +24,8 @@
     "@briebug/jest": "^1.3.1",
     "@datorama/akita": "^4.22.2",
     "@types/googlemaps": "^3.39.3",
+    "express": "^4.17.1",
+    "path": "^0.12.7",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
@@ -57,8 +59,7 @@
     "coverageReporters": [
       "html"
     ],
-    "globals": {
-    },
+    "globals": {},
     "coverageDirectory": "coverage/my-app",
     "moduleNameMapper": {
       "^core/(.*)$": "<rootDir>/src/core/$1",
@@ -67,5 +68,9 @@
       "^states/(.*)$": "<rootDir>/src/core/states/$1",
       "^components/(.*)$": "<rootDir>/src/components/$1"
     }
+  },
+  "engines": {
+    "node": "13.9.0",
+    "npm": "6.14.4"
   }
 }
