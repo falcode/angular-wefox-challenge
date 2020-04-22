@@ -11,7 +11,6 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "lite": "lite-server",
-    "preinstall": "heroku config:set NODE_MODULES_CACHE=false",
     "postinstall": "ng build --prod"
   },
   "private": true,
